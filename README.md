@@ -17,7 +17,7 @@ Choosing the **All Mail** folder ensures that these archived messages **do not c
 ## Features
 
 - Archive any number of text messages to Gmail with correct timestamps
-- Preserve attachments (PDFs, images)
+- Supports preservation of various attachment types including documents, images, text files, audio, and video formats (e.g., .pdf, .jpg, .docx, .txt, .mp3, .avi, etc.)
 - Fallback search: find attachment files even when paths are inaccurate
 - Manual input of credentials — no hardcoding
 - Clean output and user-friendly command line interface
@@ -82,9 +82,6 @@ pip install -r requirements.txt  # (if applicable)
 ]
 ```
 
-> ⚠️ Currently supported attachment formats: `.jpg`, `.jpeg`, `.png`, `.pdf`  
-> You can extend support for other types by editing the MIME detection logic in `imap.py`.
-
 ---
 
 ## 📬 Output
@@ -98,8 +95,7 @@ All archived messages will appear in your Gmail **All Mail** folder with:
 
 ## 🔧 Customization
 
-- Feel free to modify the `messages.json` file to suit your message schema.
-- You can add more attachment types by modifying the `build_mime_message()` function.
+- Feel free to modify the `messages.json` file and imap.py to suit your message schema.
 
 ---
 
