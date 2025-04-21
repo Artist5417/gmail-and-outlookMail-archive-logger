@@ -25,7 +25,6 @@ Choosing the **All Mail** folder ensures that these archived messages **do not c
 
 ---
 
-
 ## Usage
 
 ```bash
@@ -39,6 +38,16 @@ The script will prompt for:
 - One or more folders where attachments may be located (e.g. `files,Random`)
 
 ---
+## How To Get Gmail App Passwords
+
+Due to Gmail security policies, **regular passwords will not work**. You must:
+1. Enable 2-Step Verification in your Google account  
+2. Create an App Password for "Mail"  
+3. Use that password when prompted
+
+More info: [https://myaccount.google.com/security](https://myaccount.google.com/security)
+
+---
 
 ## Installation
 
@@ -47,7 +56,6 @@ git clone https://github.com/Artist5417/gmail-archive-logger.git
 cd gmail-archive-logger
 pip install -r requirements.txt  # (if applicable)
 ```
-
 > Python 3.7+ recommended
 
 ---
@@ -76,17 +84,6 @@ pip install -r requirements.txt  # (if applicable)
 
 > ⚠️ Currently supported attachment formats: `.jpg`, `.jpeg`, `.png`, `.pdf`  
 > You can extend support for other types by editing the MIME detection logic in `imap.py`.
-
----
-
-## 🛡️ Gmail App Passwords
-
-Due to Gmail security policies, **regular passwords will not work**. You must:
-1. Enable 2-Step Verification in your Google account  
-2. Create an App Password for "Mail"  
-3. Use that password when prompted
-
-More info: [https://myaccount.google.com/security](https://myaccount.google.com/security)
 
 ---
 
