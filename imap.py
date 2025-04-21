@@ -2,6 +2,7 @@ import imaplib
 import email
 import json
 import os
+import mimetypes
 from datetime import datetime, timezone
 from email.message import EmailMessage
 from email.utils import format_datetime
@@ -11,7 +12,6 @@ EMAIL_ACCOUNT = input("请输入您的 Gmail 地址: ").strip()
 EMAIL_PASSWORD = input("请输入您的 Gmail App Password: ").strip()
 JSON_FILE = input("请输入您的JSON文件名（默认 messages.json）: ").strip() or "messages.json"
 
-# 信息附件会存储在多个Folder中，以英文逗号分隔以便搜索
 dirs = input("请输入您存储附件的Folder名称（多个Folder用逗号分隔，默认 files）: ").strip()
 SEARCH_DIRS = [d.strip() for d in dirs.split(",")] if dirs else ["files"]
 
@@ -33,7 +33,7 @@ def find_attachment(filepath):
             return alt_path
     return None
 
-# 构造邮件
+# 构造邮件，使用 MIME 类型动态识别
 def build_mime(message_data):
     msg = EmailMessage()
     msg["From"] = message_data["sender"]
@@ -59,13 +59,8 @@ def build_mime(message_data):
             if real_path:
                 with open(real_path, "rb") as f:
                     data = f.read()
-                    maintype, subtype = "application", "octet-stream"
-                    if real_path.lower().endswith((".jpg", ".jpeg")):
-                        maintype, subtype = "image", "jpeg"
-                    elif real_path.lower().endswith(".png"):
-                        maintype, subtype = "image", "png"
-                    elif real_path.lower().endswith(".pdf"):
-                        maintype, subtype = "application", "pdf"
+                    ctype, _ = mimetypes.guess_type(real_path)
+                    maintype, subtype = ctype.split("/") if ctype else ("application", "octet-stream")
                     filename = os.path.basename(real_path)
                     msg.add_attachment(data, maintype=maintype, subtype=subtype, filename=filename)
             else:
@@ -97,5 +92,6 @@ if __name__ == "__main__":
         print(f"\n📨 正在写入第 {i} 条消息：{msg['platform']} {msg['timestamp']}")
         mime_bytes = build_mime(msg)
         write_to_gmail_archive(mime_bytes)
+
 
 
