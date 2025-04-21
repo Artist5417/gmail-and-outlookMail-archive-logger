@@ -1,0 +1,83 @@
+[
+  {
+    "platform": "WhatsApp",
+    "sender": "alice@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 09:00:00",
+    "content": "Here's a banner image from our last campaign.",
+    "attachments": ["files/the-godfather-banner.jpg"]
+  },
+  {
+    "platform": "SMS",
+    "sender": "bank@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 09:10:00",
+    "content": "Important document attached.",
+    "attachments": ["Random/Dialogue.pdf"]
+  },
+  {
+    "platform": "WeChat",
+    "sender": "bob@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 09:20:00",
+    "content": "This file path is wrong, but file name is valid.",
+    "attachments": ["wrongdir/Quotes.txt"]
+  },
+  {
+    "platform": "Telegram",
+    "sender": "charlie@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 09:30:00",
+    "content": "A nice classic photo.",
+    "attachments": ["files/GodFather.jpg"]
+  },
+  {
+    "platform": "SMS",
+    "sender": "dave@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 09:40:00",
+    "content": "This attachment path doesn't exist.",
+    "attachments": ["ghosts/neverhere.pdf"]
+  },
+  {
+    "platform": "WeChat",
+    "sender": "eve@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 09:50:00",
+    "content": "No attachments with this message."
+  },
+  {
+    "platform": "Messenger",
+    "sender": "frank@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 10:00:00",
+    "content": "Wrong path, valid file name in fallback.",
+    "attachments": ["x/Dialogue.pdf"]
+  },
+  {
+    "platform": "Email",
+    "sender": "grace@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 10:10:00",
+    "content": "Quote of the day.",
+    "attachments": ["files/Quotes.txt"]
+  },
+  {
+    "platform": "Telegram",
+    "sender": "hank@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 10:20:00",
+    "content": "No attachment here either."
+  },
+  {
+    "platform": "SMS",
+    "sender": "iris@example.com",
+    "receiver": "me@example.com",
+    "timestamp": "2025-04-20 10:30:00",
+    "content": "Incorrect name and folder.",
+    "attachments": ["missing/path404.jpg"]
+  }
+]
+
+
+
