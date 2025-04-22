@@ -29,11 +29,7 @@ Choosing Gmail’s **All Mail** folder ensures that these messages **do not clut
 
 ## 🚀 Usage
 
-```bash
-python imap.py      # for Gmail
-python smtp.py      # for Outlook
-The script will prompt for:
-
+- The script will prompt for:
 - **Your email address**
 - **App password** (Gmail or Outlook)
 - **JSON file** containing the messages
