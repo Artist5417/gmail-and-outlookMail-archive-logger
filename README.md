@@ -72,7 +72,7 @@ If you're part of an organization, make sure the admin **allows legacy protocols
 git clone https://github.com/Artist5417/gmail-and-outlook-archive-logger.git
 cd gmail-archive-logger
 pip install -r requirements.txt  # (if applicable)
-
+```
 ---
 
 ## 📦 JSON Format Example
@@ -95,7 +95,7 @@ pip install -r requirements.txt  # (if applicable)
     "content": "Your verification code is 123456."
   }
 ]
-
+```
 ---
 
 ## 📥 Output
