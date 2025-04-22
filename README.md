@@ -77,7 +77,6 @@ pip install -r requirements.txt  # (if applicable)
 
 ## 📄 JSON Format Example
 
-```json
 [
   {
     "platform": "WhatsApp",
@@ -95,6 +94,7 @@ pip install -r requirements.txt  # (if applicable)
     "content": "Your verification code is 123456."
   }
 ]
+
 ---
 
 ## 📥 Output
