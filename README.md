@@ -1,66 +1,85 @@
-# gmail-archive-logger
+# gmail-and-outlook-archive-logger
 
-**Gmail Archive Logger** is a lightweight Python tool that helps you archive short messages — including text content and attachments such as images or PDFs — into Gmail’s **All Mail** folder using the IMAP protocol and MIME formatting. It is designed for customizable user input, fallback file searching, and clean automation.
-
----
-
-## Why This Project
-
-We all send and receive countless short messages every day — from casual conversations to memorable moments. The goal of this tool is to **preserve those fragments of life**, so that one day, you can look back and rediscover what you once said, felt, or planned — all archived safely in your Gmail.
-
-Choosing the **All Mail** folder ensures that these archived messages **do not clutter your Inbox**, keeping your main interface clean while your memories are quietly stored in the background.
-
-> ⚠️ Note: This project **does not handle scraping or exporting messages from platforms like WhatsApp, SMS, or Telegram**. It only reads messages already structured in a specific JSON format. Users are responsible for preparing or exporting their own message data.
+**Gmail & Outlook Archive Logger** is a lightweight Python tool that helps you archive short messages — including text content and attachments such as images or PDFs — into Gmail’s **All Mail** folder or Outlook’s **Inbox**, using the IMAP or SMTP protocol with MIME formatting. It is designed for customizable user input, fallback file searching, and clean automation.
 
 ---
 
-## Features
+## 📌 Why This Project
 
-- Archive any number of text messages to Gmail with correct timestamps
-- Supports preservation of various attachment types including documents, images, text files, audio, and video formats (e.g., .pdf, .jpg, .docx, .txt, .mp3, .avi, etc.)
-- Fallback search: find attachment files even when paths are inaccurate
-- Manual input of credentials — no hardcoding
-- Clean output and user-friendly command line interface
-- Non-intrusive: uses `[Gmail]/All Mail`, keeps Inbox tidy
+We all send and receive countless short messages every day — from casual conversations to meaningful details. The goal of this tool is to **preserve those fragments of life**, so that one day, you can look back and rediscover what you once said, felt, or planned — all safely archived in your email.
+
+Choosing Gmail’s **All Mail** folder ensures that these messages **do not clutter your Inbox**, keeping your main interface clean while your memories are quietly stored in the background. When using Outlook, messages are written into the **Inbox**, as direct access to Archive is restricted via SMTP.
+
+> ⚠️ Note: This project does **not handle scraping or exporting** messages from platforms like WhatsApp, SMS, or Telegram. It only reads from pre-formatted JSON files. Users must prepare their own message data.
 
 ---
 
-## Usage
+## ✅ Features
+
+- Archive any number of short messages to Gmail or Outlook
+- Preserves full metadata: timestamp, sender, receiver, content
+- Supports a wide range of file types as attachments (e.g. `.pdf`, `.jpg`, `.txt`, `.mp3`, `.avi`, etc.)
+- Smart fallback search for attachments with correct file name and format, even if the path is unclear
+- Clean command-line interface with no hardcoded values
+- Dual-protocol support:
+  - **IMAP** for Gmail (writes to `[Gmail]/All Mail`)
+  - **SMTP** for Outlook (writes to `Inbox`)
+
+---
+
+## 🚀 Usage
 
 ```bash
-python imap.py
-```
-
+python imap.py      # for Gmail
+python smtp.py      # for Outlook
 The script will prompt for:
-- Your Gmail address  
-- Gmail App Password  
-- JSON file containing messages  
-- One or more folders where attachments may be located (e.g. `files,Random`)
+
+- **Your email address**
+- **App password** (Gmail or Outlook)
+- **JSON file** containing the messages
+- **Attachment folder(s)**: one or more directories where attachments may be located  
+  (e.g. `files`, `docs`, or `files,images`)
+
+After reading the JSON, each message is parsed, converted into MIME format, and sent to the selected email platform. Attachments are matched by filename across fallback directories. If not found, they are skipped with a warning.
 
 ---
-## How To Get Gmail App Passwords
 
-Due to Gmail security policies, **regular passwords will not work**. You must:
-1. Enable 2-Step Verification in your Google account  
+## 📩 Gmail Setup
+
+To use this script with Gmail:
+
+1. Enable 2-Step Verification in your Google Account  
 2. Create an App Password for "Mail"  
-3. Use that password when prompted
+3. Use that App Password when prompted
 
-More info: [https://myaccount.google.com/security](https://myaccount.google.com/security)
+> Regular Gmail password will **not** work due to security policies.
+
+📎 App Passwords: [https://myaccount.google.com/security](https://myaccount.google.com/security)
 
 ---
 
-## Installation
+## 📬 Outlook Notes
+
+To use this script with Outlook (SMTP method):
+
+- The Outlook account must have **SMTP enabled**
+- 2FA (Two-Step Verification) is **recommended**
+- You must create an **App Password** under Security settings
+
+If you're part of an organization, make sure the admin **allows legacy protocols like SMTP** or permits App Passwords.
+
+---
+
+## 🚀 Installation
 
 ```bash
-git clone https://github.com/Artist5417/gmail-archive-logger.git
+git clone https://github.com/Artist5417/gmail-and-outlook-archive-logger.git
 cd gmail-archive-logger
 pip install -r requirements.txt  # (if applicable)
-```
-> Python 3.7+ recommended
 
 ---
 
-## JSON Format Example
+## 📄 JSON Format Example
 
 ```json
 [
@@ -80,23 +99,25 @@ pip install -r requirements.txt  # (if applicable)
     "content": "Your verification code is 123456."
   }
 ]
-```
-
 ---
 
-## 📬 Output
+## 📥 Output
 
-All archived messages will appear in your Gmail **All Mail** folder with:
-- Correct timestamp
-- Preserved content and sender/receiver
-- Attachments (if available)
+- Gmail users: messages appear in **All Mail** folder  
+- Outlook users: messages go to **Inbox**
+- Each message contains:
+  - Proper timestamp
+  - Sender/receiver info
+  - Full message content
+  - Attachments (if available)
 
 ---
 
 ## 🔧 Customization
 
-- Feel free to modify the `messages.json` file and imap.py to suit your message schema.
+- You can edit `messages.json` to suit your own data export format.
+- You can adjust the Python script to support more MIME types or to change folders.
+- Currently supports `.jpg`, `.png`, `.pdf`, `.docx`, `.txt`, `.mp3`, `.avi`, and other common types.
 
----
 
 
