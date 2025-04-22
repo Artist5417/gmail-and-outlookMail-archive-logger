@@ -75,8 +75,9 @@ pip install -r requirements.txt  # (if applicable)
 
 ---
 
-## 📄 JSON Format Example
+## 📦 JSON Format Example
 
+```json
 [
   {
     "platform": "WhatsApp",
